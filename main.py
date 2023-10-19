@@ -1,21 +1,30 @@
+# import os
+# os.environ["IMAGEIO_FFMPEG_EXE"] = "/usr/bin/ffmpeg"
+import ffmpeg
+from moviepy.editor import VideoFileClip
 from speech_recognition import Recognizer, AudioFile
 import nltk
 from nltk.sentiment import SentimentIntensityAnalyzer
 
 recognizer = Recognizer()
 
-with AudioFile('chile.wav') as audio_file:
+video = VideoFileClip("Video_test_1.mp4")
+video.audio.write_audiofile("Video_test_1.wav")
+
+with AudioFile('Video_test_1.wav') as audio_file:
   audio = recognizer.record(audio_file)
 
 text = recognizer.recognize_google(audio)
+print(text)
 
-nltk.download('vader_lexicon')
+# Analyzer of speech sentiment
+# nltk.download('vader_lexicon')
 
-analyzer = SentimentIntensityAnalyzer()
-scores = analyzer.polarity_scores(text)
-print(scores)
+# analyzer = SentimentIntensityAnalyzer()
+# scores = analyzer.polarity_scores(text)
+# print(scores)
 
-if scores['compound'] > 0:
-  print('Positive Speech')
-else:
-  print('Negative Speech')
+# if scores['compound'] > 0:
+#   print('Positive Speech')
+# else:
+#   print('Negative Speech')
