@@ -15,6 +15,15 @@ with AudioFile('Video_test_1.wav') as audio_file:
   audio = recognizer.record(audio_file)
 
 text = recognizer.recognize_google(audio)
+
+# The filename of the file you want to write to
+filename = f'{video}_transcript.txt'
+
+# Open the file with writing permission
+with open(filename, 'w') as file:
+  # Write text to the file
+  file.write(text)
+
 print(text)
 
 # Analyzer of speech sentiment
