@@ -17,7 +17,7 @@ with AudioFile('Video_test_1.wav') as audio_file:
 text = recognizer.recognize_google(audio)
 
 # The filename of the file you want to write to
-filename = f'{video}_transcript.txt'
+filename = f'video_transcript.txt'
 
 # Open the file with writing permission
 with open(filename, 'w') as file:
